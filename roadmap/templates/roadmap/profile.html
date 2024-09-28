@@ -1,0 +1,27 @@
+{% extends 'roadmap/base.html' %}
+
+{% block title %}Perfil - Career Roadmap{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Completa tu perfil</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="current_job" class="form-label">Trabajo actual</label>
+        <input type="text" class="form-control" id="current_job" name="current_job" required>
+    </div>
+    <div class="mb-3">
+        <label for="dream_job" class="form-label">Trabajo soñado</label>
+        <input type="text" class="form-control" id="dream_job" name="dream_job" required>
+    </div>
+    <div class="mb-3">
+        <label for="skills" class="form-label">Habilidades (separadas por comas)</label>
+        <textarea class="form-control" id="skills" name="skills" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

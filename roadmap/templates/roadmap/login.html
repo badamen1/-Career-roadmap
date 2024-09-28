@@ -1,0 +1,11 @@
+{% extends 'roadmap/base.html' %}
+
+{% block content %}
+<h2>Iniciar sesión</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Iniciar sesión</button>
+    <a href="{% url 'signup' %}">¿No tienes una cuenta? Regístrate</a>
+</form>
+{% endblock %}

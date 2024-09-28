@@ -1,0 +1,22 @@
+{% extends 'roadmap/base.html' %}
+
+{% block content %}
+<h2>Editar Perfil</h2>
+<form method="POST" action="{% url 'editar_perfil' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="current_job" class="form-label">Trabajo actual</label>
+        <input type="text" class="form-control" id="current_job" name="current_job" value="{{ profile.current_job }}">
+    </div>
+    <div class="mb-3">
+        <label for="dream_job" class="form-label">Trabajo soñado</label>
+        <input type="text" class="form-control" id="dream_job" name="dream_job" value="{{ profile.dream_job }}">
+    </div>
+    <div class="mb-3">
+        <label for="skills" class="form-label">Habilidades actuales</label>
+        <input type="text" class="form-control" id="skills" name="skills" value="{{ profile.skills }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+{% endblock %}              
+

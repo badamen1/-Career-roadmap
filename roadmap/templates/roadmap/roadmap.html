@@ -1,0 +1,21 @@
+{% extends 'roadmap/base.html' %}
+
+{% block title %}Tu Roadmap - Career Roadmap{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Tu Roadmap Profesional</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Perfil</h5>
+        <p class="card-text"><strong>Nombre:</strong> {{ profile.user.username }}</p>
+        <p class="card-text"><strong>Trabajo actual:</strong> {{ profile.current_job }}</p>
+        <p class="card-text"><strong>Trabajo soñado:</strong> {{ profile.dream_job }}</p>
+        <p class="card-text"><strong>Habilidades actuales:</strong> {{ profile.skills }}</p>
+        <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Editar perfil</a>
+    </div>
+</div>
+<h3 class="mb-3">Recomendaciones del Chatbot</h3>
+<p>Para obtener recomendaciones personalizadas, por favor utiliza nuestro chatbot.</p>
+<a href="{% url 'chat' %}" class="btn btn-primary">Ir al Chatbot</a>
+{% endblock %}
+
