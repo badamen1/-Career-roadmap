@@ -1,6 +1,7 @@
 # Career-roadmap
 
-Bienvenido a Career-roadmap. Sigamos esta guía para una rápida introducción a nuestro proyecto.
+Bienvenido a **Career-roadmap**. Esta aplicación web ayuda a los usuarios a construir una hoja de ruta profesional personalizada. Creada como parte del curso de **Ingeniería de Software**, este proyecto tiene como objetivo facilitar el desarrollo de carreras.
+
 
 ## Tabla de contenidos
 - [Acerca de](#acerca-de)
@@ -9,7 +10,7 @@ Bienvenido a Career-roadmap. Sigamos esta guía para una rápida introducción a
 
 ## Acerca de
 
-Career-roadmap es una aplicación web desarrollada por **Bayron Mena**, **Jesus Gomez** y **Jean Guillot** como parte del proyecto para “Ingeniería de Software” dirigido por la profesora **Elizabeth Monsalve**.
+Career-roadmap es una aplicación web que permite a los usuarios construir un plan de carrera personalizado basado en sus intereses y habilidades. Desarrollado por **Bayron Mena**, **Jesus Gomez**, y **Jean Guillot** bajo la supervisión de la profesora **Elizabeth Monsalve**.
 
 ## Cómo instalar
 
@@ -28,19 +29,7 @@ Para tener una copia de nuestro proyecto, puedes seguir los siguientes pasos:
    cd ./career_roadmap
    ```
 
-4. Crea un entorno virtual en Python:
-
-   ```bash
-   python -m venv venv
-   ```
-
-5. Activa el entorno virtual:
-
-   ```bash
-   ./venv/scripts/activate
-   ```
-
-6. Instala las librerías requeridas usando el archivo `requirements.txt`.
+4. Instala las librerías requeridas usando el archivo `requirements.txt`.
 
    ```bash
    pip install -r requirements.txt
@@ -70,19 +59,17 @@ Para tener una copia de nuestro proyecto, puedes seguir los siguientes pasos:
    ```
 
    Este paso creará un archivo `sqlite3`. Esta es la base de datos con todas las tablas y relaciones necesarias.
+10. Crea la base de datos de los intereses
 
-10. Ejecuta el servidor de desarrollo.
+    ```bash
+      python manage.py agregar_intereses
+    ```
+
+11. Ejecuta el servidor de desarrollo.
 
     ```bash
     python manage.py runserver
     ```
-
-11. (Opcional) Para desactivar el entorno virtual después de trabajar:
-
-    ```bash
-    deactivate
-    ```
-
 ## Licencia
 
 Copyright 2024, Bayron Mena, Jesus Gomez, Jean Guillot. Todos los derechos reservados Career-Roadmap.
