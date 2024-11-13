@@ -6,7 +6,7 @@
 <h1 class="mb-4">Bienvenido a Career Roadmap</h1>
 <p class="lead">Descubre tu camino profesional ideal y obtén recomendaciones personalizadas.</p>
 {% if user.is_authenticated %}
-<a href="{% url 'chat' %}" class="btn btn-primary">Comienza tu viaje con nuestro chatbot</a>
+<a href="{% url 'crear_roadmap' %}" class="btn btn-primary">Comienza tu viaje con nuestro Roadmap</a>
 {% else %}
 <a href="{% url 'login' %}" class="btn btn-primary">Inicia sesión para comenzar</a>
 {% endif %}

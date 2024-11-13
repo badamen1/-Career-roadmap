@@ -1,45 +1,44 @@
-import openai  
-import os
-from dotenv import load_dotenv
+import json
+from openai import OpenAI
+from django.conf import settings
 
-# Cargar el archivo .env
-load_dotenv('api_keys.env')  # Ajusta la ruta si es necesario
-
-class Chatbot:
+class chatbot():
     def __init__(self):
-        openai.api_key = os.getenv("openai_apikey")
-        self.questions = [
-            "¿Cuál es tu nombre?",
-            "¿Cuál es tu trabajo actual?",
-            "¿Cuál es tu trabajo soñado?",
-            "¿Cuáles son tus habilidades actuales? (sepáralas por comas)",
+        api_key = settings.KEYS['openai_apikey']
+        self.client = OpenAI(api_key=api_key)
+        self.models = {
+            'gpt': "gpt-4o-mini",
+            'embedding': "text-embedding-3-small"
+        }
+
+    def generateRoadmap(self, objective, salary):
+        content = f"""Imagina que eres un reclutador experimentado. Se te solicita crear una hoja de ruta de autoestudio de 5 pasos para convertirte en {objective}. Para cada paso de la hoja de ruta, proporciona recomendaciones sobre cómo expandir el tema que estás sugiriendo y algunos materiales que puedes ofrecer. Asegúrate de que cada paso que sugieres esté planeado para aprender algo hacia el objetivo deseado. Concéntrate solo en cursos que pueda hacer desde casa, en línea. Además, proporciona un trabajo al que pueda postularme después de completar cada paso. Justifica cómo esta hoja de ruta me beneficiará en mi carrera profesional y finalmente, después de hacer un análisis, indica si {salary} dólares al año como salario esperado es una buena estimación, o si es demasiado alto o bajo considerando el nivel que se puede alcanzar con esta hoja de ruta.
+
+Proporciona tu respuesta en el siguiente formato JSON:
+name: -en lo que quiero convertirme-,
+steps: arreglo de pasos en el siguiente formato:
+-number: número del paso,
+-name: nombre del paso,
+-remarkablePoints: arreglo de puntos destacables,
+-recommendedMaterials: arreglo de materiales recomendados con el título de cada uno sin URL, y
+-jobSuggestion: sugerencia de trabajo como un objeto con: título y descripción.
+benefit: Cómo esta hoja de ruta me beneficia.
+salary: cadena con tu opinión sobre mis expectativas salariales.
+No agregues un punto al final del nombre.
+Entrega tu respuesta en el formato de objeto JSON indicado."""
+        msg = [
+            {"role": "user", "content": content}
         ]
-        self.current_question = 0
+        response = self.client.chat.completions.create(
+            model=self.models['gpt'],
+            messages=msg,
+            response_format={"type": "json_object"},
+            max_tokens=2000
+        )
+        return json.loads(response.choices[0].message.content) # Returns JSON formmated response.
 
-    def get_response(self, user_input, chat_history):
-        if self.current_question < len(self.questions):
-            response = self.questions[self.current_question]
-            self.current_question += 1
-        else:
-            response = self.generate_recommendation(user_input, chat_history)
-        return response
-
-    def generate_recommendation(self, user_input, chat_history):
-        # Usar todo el historial de chat para el contexto
-        chat_context = "\n".join([f"Usuario: {entry['user']}\nAI: {entry['ai']}" for entry in chat_history])
-        
-        messages = [
-            {"role": "system", "content": "Eres un asesor de carrera."},
-            {"role": "user", "content": f"Tarea: Proporciona una serie de pasos para ayudar al usuario a alcanzar su trabajo soñado.\nHistoria del chat:\n{chat_context}\n{user_input}"}
-        ]
-
-        try:
-            response = openai.ChatCompletion.create(
-                model="gpt-4",  # Asegúrate de que el modelo sea correcto
-                messages=messages
-            )
-            return response['choices'][0]['message']['content']
-        except Exception as e:
-            return f"Ocurrió un error al comunicarse con el chatbot: {str(e)}"
-
-chatbot = Chatbot()
+    def embedObjective(self, objective):
+        objective = objective.replace("\n", " ")
+        return self.client.embeddings.create(input=[objective], model=self.models['embedding']).data[0].embedding
+    
+ 

@@ -1,21 +1,77 @@
 {% extends 'roadmap/base.html' %}
+{% load static %}
 
 {% block title %}Tu Roadmap - Career Roadmap{% endblock %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/roadmapstyles.css' %}">
+<link rel="icon" type="image/png" href="{% static 'images/logo.png' %}">
+{% endblock styles %}
+
 {% block content %}
-<h2 class="mb-4">Tu Roadmap Profesional</h2>
-<div class="card mb-4">
-    <div class="card-body">
-        <h5 class="card-title">Perfil</h5>
-        <p class="card-text"><strong>Nombre:</strong> {{ profile.user.username }}</p>
-        <p class="card-text"><strong>Trabajo actual:</strong> {{ profile.current_job }}</p>
-        <p class="card-text"><strong>Trabajo soñado:</strong> {{ profile.dream_job }}</p>
-        <p class="card-text"><strong>Habilidades actuales:</strong> {{ profile.skills }}</p>
-        <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Editar perfil</a>
-    </div>
+<div class="contenedorTitulo">
+    <h1 class="tituloRoadmap">Roadmap para convertirte en {{ roadmap.content.name }}</h1>
 </div>
-<h3 class="mb-3">Recomendaciones del Chatbot</h3>
-<p>Para obtener recomendaciones personalizadas, por favor utiliza nuestro chatbot.</p>
-<a href="{% url 'chat' %}" class="btn btn-primary">Ir al Chatbot</a>
-{% endblock %}
+
+<div class="main">
+    <h3 class="mb-3">Contenido del Roadmap</h3>
+    <div class="roadmap-content">
+        <p><strong>Objetivo:</strong> {{ roadmap.content.name }}</p>
+        <h4>Pasos a seguir:</h4>
+        <ul>
+            {% for step in roadmap.content.steps %}
+                <li>
+                    <input type="checkbox" id="step{{ step.number }}" name="remarkablePoint" value="{{ step.number }}" {% if step.completed %}checked{% endif %}>
+                    <label for="step{{ step.number }}">{{ step.number }} - {{ step.name }}</label>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="container completion">
+        <p>Porcentaje de finalización: {{ completionPercentage }}%</p>
+    </div>
+
+    {% for step in roadmap.content.steps %}
+        <dialog id="modal{{ step.number }}" class="modals">
+            <div class="pasos" id="Paso{{ step.number }}">
+                <div class="infoPaso">
+                    <button class="botonClose2 btn-cerrar-modal{{ step.number }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                        </svg>
+                    </button>
+                    <h2>Paso {{ step.number }}</h2>
+                    <h3>{{ step.name }}</h3>
+                    <b>Puntos destacados</b>
+                    <ul>
+                        {% for remarkablePoint in step.remarkablePoints %}
+                            <li><p>{{ remarkablePoint }}</p></li>
+                        {% endfor %}
+                    </ul>
+                    <b>Materiales recomendados</b>
+                    <ul>
+                        {% for material in step.recommendedMaterials %}
+                            <li><p>{{ material }}</p></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="infoJob">
+                    <h3>Sugerencia de trabajo</h3>
+                    <h4>{{ step.jobSuggestion.title }}</h4>
+                    <p>{{ step.jobSuggestion.description }}</p>
+                </div>
+            </div>
+        </dialog>
+    {% endfor %}
+
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Volver a la página principal</a>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'scripts/roadmap.js' %}"></script>
+<script type="application/json" id="checkpoints-data">{{ checkpoints|safe }}</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+{% endblock scripts %}
 

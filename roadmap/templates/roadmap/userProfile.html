@@ -1,0 +1,75 @@
+{% extends 'roadmap/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"> </script>
+    <title>{% block title %} {{ profile.username }}'s profile {% endblock title %}</title>
+    {% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/userProfile.css'%}">
+    {% endblock styles %}
+</head>
+
+<body>
+    {% block content %}
+    <div class="container-fluid px-0">
+        <div class="w-100 banner">
+            <div class="profileInfo">
+                <ul class="listProfileInfo">
+                    <li class="infoText" id="infoUser">
+                        <h2><p class="card-text"><strong>Nombre:</strong> {{ profile.user.username }}</p></h2>
+                        
+                    </li>
+
+            <!-- ... código existente ... -->
+        </div>
+    
+        <div class="container contenedorRoadmapsGrande">
+            <div class="row cajaContenedorRoadmaps">
+                {% if profile.roadmaps %}
+                {% for roadmap in profile.roadmaps %}
+                <div class="contenedorRoadmaps flex-column justify-content-between">
+                    <div class="top d-flex flex-row justify-content-center">
+                        <a href="/roadmap/displayRoadmap/{{roadmap.id}}" class="tituloCard">
+                            <h5 class="card-title text-center my-1">{{ roadmap.content.name }}</h5>
+                        </a>
+                    </div>
+                    <br>
+                    <div class="d-flex flex-row w-100 justify-content-between">
+                        <div class="infoRoadmap1">
+                            <p>Interest: {{ roadmap.interest }}</p>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-end mb-3 infoRoadmap2">
+                            <div class="d-flex flex-row align-items-center">
+                                <p style="margin: 0px 3px 0px 10px">{{ roadmap.completionPercentage }}%</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm3.354 5.646a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7 9.293l3.646-3.647z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                {% if not profile.isCompany %}
+                <h2 class="text-center pt-4">You haven't created any roadmap.</h2>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+</body>
+{% block scripts %}
+<script src="{% static 'scripts/userProfile.js' %}"></script>
+{% endblock scripts %}
+
+</html>

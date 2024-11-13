@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Ciencias Naturales",
+        "description": "Biología, Química, Física, Geología, Ciencias Ambientales, Zoología, Biología Marina, Astronomía, Ecología, Botánica, Bioquímica, Ciencias de la Tierra",
+        "color": "#90BE6D"
+    },
+    {
+        "name": "Matemáticas y Estadísticas",
+        "description": "Matemáticas Puras, Matemáticas Aplicadas, Estadísticas, Ciencias Actuariales, Física Matemática, Matemáticas Computacionales, Ciencia de Datos, Investigación de Operaciones, Matemáticas Financieras, Teoría de la Probabilidad, Bioestadística, Análisis Cuantitativo",
+        "color": "#F9393C"
+    },
+    {
+        "name": "Ingeniería y Tecnología",
+        "description": "Ingeniería Civil, Ingeniería Mecánica, Ingeniería Eléctrica, Ingeniería Informática, Ingeniería Química, Ingeniería Aeroespacial, Ingeniería Biomédica, Ingeniería Ambiental, Ingeniería Industrial, Ingeniería de Software, Ciencia e Ingeniería de Materiales, Ingeniería Robótica",
+        "color": "#206683"
+    },
+    {
+        "name": "Ciencias Médicas y de la Salud",
+        "description": "Medicina (MD), Enfermería, Farmacia, Odontología, Medicina Veterinaria, Salud Pública, Fisioterapia, Terapia Ocupacional, Nutrición y Dietética, Ciencias Biomédicas, Radiología, Optometría",
+        "color": "#43AA8B"
+    },
+    {
+        "name": "Ciencias Sociales",
+        "description": "Psicología, Sociología, Antropología, Ciencias Políticas, Economía, Relaciones Internacionales, Criminología, Geografía (Geografía Humana), Trabajo Social, Estudios Culturales, Estudios Urbanos, Estudios de Género",
+        "color": "#774304"
+    },
+    {
+        "name": "Humanidades",
+        "description": "Historia, Filosofía, Literatura, Lingüística, Estudios Religiosos, Clásicas, Historia del Arte, Estudios Culturales, Ética, Arqueología, Literatura Comparada, Teología",
+        "color": "#F9C74F"
+    },
+    {
+        "name": "Artes y Diseño",
+        "description": "Bellas Artes, Diseño Gráfico, Diseño de Interiores, Diseño de Moda, Diseño Industrial, Animación, Estudios Cinematográficos, Fotografía, Música, Artes Escénicas, Artes Visuales, Ilustración",
+        "color": "#552381"
+    },
+    {
+        "name": "Negocios y Gestión",
+        "description": "Administración de Empresas (MBA), Contabilidad, Finanzas, Mercadotecnia, Recursos Humanos, Emprendimiento, Gestión de la Cadena de Suministro, Negocios Internacionales, Sistemas de Información Gerencial (MIS), Gestión Inmobiliaria, Gestión de Hospitalidad, Administración Pública",
+        "color": "#B0D4D2"
+    },
+    {
+        "name": "Derecho y Estudios Legales",
+        "description": "Derecho (LLB/JD), Derecho Internacional, Derecho Penal, Derecho Corporativo, Derecho Ambiental, Derecho de los Derechos Humanos, Derecho de Propiedad Intelectual, Derecho Laboral, Derecho de Familia, Derecho de la Salud, Derecho Administrativo, Derecho Fiscal",
+        "color": "#FA9461"
+    },
+    {
+        "name": "Educación",
+        "description": "Educación Infantil, Educación Primaria, Educación Secundaria, Educación Especial, Liderazgo Educativo, Currículo e Instrucción, Educación de Adultos, Tecnología Educativa, Educación Superior, Educación en Idiomas, Educación STEM, Educación Física",
+        "color": "#F3722C"
+    },
+    {
+        "name": "Ciencias de la Computación y Sistemas de Información",
+        "description": "Ciencias de la Computación, Tecnología de la Información, Desarrollo de Software, Ciberseguridad, Ciencia de Datos, Inteligencia Artificial, Computación en la Nube, Ingeniería de Redes, Desarrollo de Videojuegos, Gestión de Sistemas de Información, Desarrollo Web, Ingeniería Informática",
+        "color": "#577590"
+    },
+    {
+        "name": "Ciencias Ambientales y Agrícolas",
+        "description": "Ciencias Ambientales, Ciencias Agrícolas, Silvicultura, Manejo de Vida Silvestre, Agronomía, Horticultura, Ciencias del Suelo, Ingeniería Ambiental, Gestión de Recursos Naturales, Agricultura Sostenible, Acuicultura, Ciencias de las Plantas",
+        "color": "#2E4601"
+    },
+    {
+        "name": "Comunicación y Medios",
+        "description": "Periodismo, Estudios de Medios, Relaciones Públicas, Radiodifusión, Producción de Cine y Televisión, Medios Digitales, Publicidad, Estudios de Comunicación, Publicación, Comunicaciones Corporativas, Gestión de Redes Sociales, Comunicación Oral",
+        "color": "#A975A6"
+    },
+    {
+        "name": "Estudios Interdisciplinarios",
+        "description": "Estudios Internacionales, Políticas Ambientales, Ciencia Cognitiva, Salud Global, Estudios Urbanos, Estudios de Sostenibilidad, Ciencia Tecnología y Sociedad (STS), Estudios de Mujeres y Género, Estudios de Paz y Conflicto, Estudios de Desarrollo, Estudios Culturales y de Medios, Estudios Liberales",
+        "color": "#BBA0AE"
+    }
+]

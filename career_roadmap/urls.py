@@ -24,8 +24,4 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('chat/', views.chat, name='chat'),
     path('roadmap/', include('roadmap.urls')),  # Asegúrate de incluir las URLs de la aplicación
-    path('profile/', views.profile, name='profile'),
-    path('signup/', views.signup, name='signup'),
-    path('login/', views.login_view, name='login'),
-    path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
 ]

@@ -1,0 +1,37 @@
+<!-- templates/roadmap/interestForm.html -->
+{% extends 'roadmap/base.html' %}
+
+{% block title %}Formulario de Intereses{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Selecciona tus Intereses</h1>
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="POST" action="{% url 'crear_roadmap' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="interest" class="form-label">Intereses:</label>
+            <select name="interest" id="interest" class="form-select" required>
+                <option value="">Seleccione un interés</option>
+
+                {% for interest in intereses %}
+
+                    <option value="{{ interest.id }}">{{ interest.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="objective" class="form-label">Objetivo:</label>
+            <input type="text" name="objective" id="objective" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="salary" class="form-label">Salario:</label>
+            <input type="number" name="salary" id="salary" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Generar Roadmap</button>
+    </form>
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Volver a la página principal</a>
+</div>
+{% endblock %}

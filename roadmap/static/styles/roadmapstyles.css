@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.contenedorTitulo {
+    background-color: #102C57;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloRoadmap {
+    width: 80%;
+    text-align: center;
+    margin: 100px auto;
+    padding: 0;
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+}
+
+.main {
+    margin: 200px auto 50px auto;
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Cambiado a column para mejor alineación */
+}
+
+.containerProgress {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.progress {
+    margin: 12px 0;
+}
+
+/* Estilos para los botones de like y clone */
+.containerLike, .containerCloneDelete {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    transition: 100ms;
+    margin: 10px 0;
+}
+
+.containerLike input, .containerCloneDelete input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Estilos para el modal de eliminación */
+.modalDelete, .modalClone {
+    max-width: 35%;
+}
+
+.modalMessage {
+    text-align: center;
+}
+
+/* Otros estilos existentes... */
